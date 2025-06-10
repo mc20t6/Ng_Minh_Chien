@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Truyền File An Toàn</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
+        <h1 class="text-2xl font-bold mb-4 text-center">🛡️ Ứng Dụng Truyền File An Toàn</h1>
+
+        <form method="POST" action="/upload" enctype="multipart/form-data" class="space-y-4">
+            <input type="file" name="file" class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2" required>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Tải lên</button>
+        </form>
+
+        {% if filename %}
+        <div class="mt-6 p-4 bg-green-100 rounded">
+            <p><strong>Tên file:</strong> {{ filename }}</p>
+            <p><strong>SHA-256:</strong> {{ filehash }}</p>
+            <a href="{{ url_for('download_file', filename=filename) }}" class="mt-2 inline-block text-blue-600 underline">⬇️ Tải file về</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
