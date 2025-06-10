@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Transfer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 450px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            margin-bottom: 2rem;
+        }
+
+        input[type="file"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 1rem;
+            color: #006;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>File Upload & Download</h2>
+
+        <!-- Upload Form -->
+        <form method="POST" enctype="multipart/form-data">
+            <label><strong>Upload file:</strong></label>
+            <input type="file" name="file" required>
+            <button type="submit" name="action" value="upload">Upload</button>
+        </form>
+
+        <hr>
+
+        <!-- Download Form -->
+        <form method="POST">
+            <label><strong>Receive file:</strong></label>
+            <input type="text" name="filename" placeholder="Enter filename to receive" required>
+            <button type="submit" name="action" value="download">Download</button>
+        </form>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
